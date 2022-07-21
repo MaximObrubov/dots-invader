@@ -1,1 +1,18 @@
-FIELD
+<div class="field">
+  <svg height="600px" id="field-ctx" style="width:{{CELL_SIZE * size.width}}px; height: {{CELL_SIZE * size.height}}px; border:1px dashed black">
+    <style type="text/css">
+      line { stroke: #ccc; stroke-width: 2; }
+    </style>
+    <defs>
+      <pattern id="grid1" patternUnits="userSpaceOnUse" width="35" height="35">
+        <line x1="0" y1="0" x2="35" y2="0" />
+      </pattern>
+      <pattern id="grid2" patternUnits="userSpaceOnUse" width="35" height="35">
+        <line x1="0" y1="0" x2="0" y2="35" />
+      </pattern>
+    </defs>
+
+    <rect width="100%" height="100%" fill="url(#grid1)" />
+    <rect width="100%" height="100%" fill="url(#grid2)" />
+  </svg>
+</div>
