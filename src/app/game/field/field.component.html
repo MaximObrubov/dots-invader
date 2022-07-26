@@ -1,5 +1,9 @@
 <div class="field">
-  <svg height="600px" id="field-ctx" style="width:{{CELL_SIZE * size.width}}px; height: {{CELL_SIZE * size.height}}px; border:1px dashed black">
+  <svg
+    #svg
+    height="600px"
+    id="field-ctx"
+    style="width:{{options.field.cell * size.width}}px; height: {{options.field.cell * size.height}}px; border:1px dashed black">
     <style type="text/css">
       line { stroke: #ccc; stroke-width: 2; }
     </style>
@@ -14,5 +18,19 @@
 
     <rect width="100%" height="100%" fill="url(#grid1)" />
     <rect width="100%" height="100%" fill="url(#grid2)" />
+
+    <circle
+      *ngFor="let point of points"
+      [attr.cx]="point.x"
+      [attr.cy]="point.y"
+      [attr.r]="options.dot.radius"
+    ></circle>
+
+    <circle
+      *ngIf="currentPoint"
+      [attr.cx]="currentPoint.x"
+      [attr.cy]="currentPoint.y"
+      [attr.r]="options.dot.radius"
+    ></circle>
   </svg>
 </div>

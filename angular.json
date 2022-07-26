@@ -34,7 +34,6 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "./node_modules/snapsvg/dist/snap.svg-min.js"
             ]
           },
           "configurations": {
