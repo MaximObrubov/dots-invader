@@ -6,5 +6,10 @@ export const options = {
     width: 24,
     height: 17,
     cell: 35,
-  }
+  },
+  colors: [
+    "lightblue",
+    "darkred",
+    "darkblue",
+  ]
 }

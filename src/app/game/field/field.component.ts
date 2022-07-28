@@ -4,8 +4,6 @@ import { options } from '../../config';
 import { fromEvent, Observable } from 'rxjs';
 import { debounceTime, throttleTime, map } from 'rxjs/operators';
 import { Point } from '../types/point.class';
-import { PLAYER } from '../types/player';
-
 @Component({
   selector: 'game-field',
   templateUrl: './field.component.html',
@@ -25,7 +23,7 @@ export class FieldComponent implements OnInit, AfterViewInit {
   constructor(
     private elementRef: ElementRef
   ) {
-    this.currentPoint = new Point(30, 40, PLAYER.FIRST);
+    this.currentPoint = new Point(30, 40, "red");
   }
 
   public size = { ...options.field };
@@ -34,9 +32,6 @@ export class FieldComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.group('%c Custom log:', 'background: #00A9A5; color: #00D5DB; font-size: 16px;')
-    console.log(this.svg.nativeElement.getBoundingClientRect())
-    console.groupEnd()
     this.svgOffset = this.svg.nativeElement.getBoundingClientRect();
     this.mouseMove$ = fromEvent(this.svg.nativeElement, 'mousemove')
       .pipe(throttleTime(100));
@@ -47,6 +42,10 @@ export class FieldComponent implements OnInit, AfterViewInit {
     if (!this.currentPoint) return;
     this.currentPoint.x = ($event as MouseEvent).clientX - this.svgOffset.left;
     this.currentPoint.y = ($event as MouseEvent).clientY - this.svgOffset.top;
+  }
+
+  setPoint() {
+    
   }
 
 }

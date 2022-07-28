@@ -22,12 +22,14 @@
     <circle
       *ngFor="let point of points"
       [attr.cx]="point.x"
+      [attr.fill]="point.color"
       [attr.cy]="point.y"
       [attr.r]="options.dot.radius"
     ></circle>
 
     <circle
       *ngIf="currentPoint"
+      [attr.fill]="currentPoint.color"
       [attr.cx]="currentPoint.x"
       [attr.cy]="currentPoint.y"
       [attr.r]="options.dot.radius"

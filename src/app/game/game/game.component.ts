@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PointInterface } from '../types/point';
-import { PLAYER } from '../types/player';
+import { options } from '../../config';
+import { Player } from '../Player';
+import { Point } from '../types/point.class';
+
 
 @Component({
   selector: 'app-game',
@@ -9,11 +12,18 @@ import { PLAYER } from '../types/player';
 })
 export class GameComponent implements OnInit {
 
-  public points: Array<PointInterface>;
+  public players: Array<Player>;
+
+  public points: Array<Point> = [];
 
   constructor() {
+    this.players = [
+      new Player("orange"),
+      new Player("darkblue"),
+    ];
     this.points = [
-      {x: 40, y: 60, player: PLAYER.FIRST }
+      ...this.players[0].points,
+      ...this.players[1].points,
     ]
   }
 

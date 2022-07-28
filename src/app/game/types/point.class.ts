@@ -1,4 +1,3 @@
-import { PLAYER } from "./player";
 import { options } from "../../config";
 import { PointInterface } from "./point";
 
@@ -7,12 +6,12 @@ export class Point implements PointInterface {
 
   public _y: number;
 
-  public player: PLAYER;
+  public color: string;
 
-  constructor(x: number, y: number, player: PLAYER) {
+  constructor(x: number, y: number, color: string) {
     this._x = x;
     this._y = y;
-    this.player = player;
+    this.color = color;
   }
 
   set x(value: number) {
