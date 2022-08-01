@@ -9,4 +9,8 @@ export class Player {
   constructor(color: string) {
     this.color = color;
   }
+
+  addPoint(point: Point) {
+    this.points.push(point);
+  }
 }

@@ -1,9 +1,19 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { PointInterface } from '../types/point';
 import { options } from '../../config';
 import { fromEvent, Observable } from 'rxjs';
-import { debounceTime, throttleTime, map } from 'rxjs/operators';
+import { throttleTime } from 'rxjs/operators';
 import { Point } from '../types/point.class';
+
 @Component({
   selector: 'game-field',
   templateUrl: './field.component.html',
@@ -12,23 +22,28 @@ import { Point } from '../types/point.class';
 export class FieldComponent implements OnInit, AfterViewInit {
 
   @ViewChild('svg') svg!: ElementRef<SVGElement>;
-  // @ViewChild('svg') svg!: ElementRef<HTMLOrSVGElement>;
   mouseMove$!: Observable<Event>;
-  currentPoint: PointInterface | null;
+  currentPoint: Point | undefined;
 
+  @Input() pointColor: string | null = null;
   @Input() points!: Array<PointInterface>;
+  @Output() pointSetEvent = new EventEmitter<Point>();
   options = options;
   svgOffset!: {top: number, left: number}
 
-  constructor(
-    private elementRef: ElementRef
-  ) {
-    this.currentPoint = new Point(30, 40, "red");
-  }
+  constructor() {}
 
   public size = { ...options.field };
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
+    let x, y;
+    this.currentPoint
+      ? {x, y} = this.currentPoint
+      : [x, y] = [0, 0];
+    if (this.pointColor) this.currentPoint = new Point( x , y, this.pointColor);
   }
 
   ngAfterViewInit() {
@@ -45,7 +60,7 @@ export class FieldComponent implements OnInit, AfterViewInit {
   }
 
   setPoint() {
-    
+    this.pointSetEvent.emit(this.currentPoint);
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="field">
+<div class="field" (click)="setPoint()">
   <svg
     #svg
     height="600px"
@@ -19,7 +19,7 @@
     <rect width="100%" height="100%" fill="url(#grid1)" />
     <rect width="100%" height="100%" fill="url(#grid2)" />
 
-    <circle
+    <!-- <circle
       *ngFor="let point of points"
       [attr.cx]="point.x"
       [attr.fill]="point.color"
@@ -33,6 +33,9 @@
       [attr.cx]="currentPoint.x"
       [attr.cy]="currentPoint.y"
       [attr.r]="options.dot.radius"
-    ></circle>
+    ></circle> -->
   </svg>
+  <div class="field--points">
+    app-point
+  </div>
 </div>

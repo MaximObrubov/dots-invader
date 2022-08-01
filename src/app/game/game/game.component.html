@@ -1,1 +1,5 @@
-<game-field [points]="points"></game-field>
+<game-field
+  [points]="points"
+  [pointColor]="currentPlayer.color"
+  (pointSetEvent)="nextStep($event)"
+></game-field>
