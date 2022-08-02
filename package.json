@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "build": "PRODUCTION=true ng build --base-href 'https://maximobrubov.github.io/dots-invader/'",
+    "deploy": "npx angular-cli-ghpages --dir=dist/dots-invader",
     "start": "ng serve",
-    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
