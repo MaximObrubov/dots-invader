@@ -6,9 +6,9 @@ export class Point implements PointInterface {
 
   public _y: number;
 
-  public color: string;
+  public color?: string;
 
-  constructor(x: number, y: number, color: string) {
+  constructor(x: number, y: number, color?: string) {
     this._x = x;
     this._y = y;
     this.color = color;

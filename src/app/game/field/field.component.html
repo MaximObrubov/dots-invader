@@ -1,8 +1,6 @@
-<div class="field--wrapper">
 <div
   class="field"
   style="width:{{options.cell * options.width}}px; height: {{options.cell * options.height}}px;"
-  (click)="setPoint()"
 >
   <svg
     #svg
@@ -40,7 +38,10 @@
     ></circle> -->
   </svg>
   <div class="field--points">
-    <game-point *ngFor="let point of points" [point]="point"></game-point>
+    <game-point
+      *ngFor="let point of points"
+      [point]="point"
+      (click)="onPointSelected(point)"
+    ></game-point>
   </div>
-</div>
 </div>

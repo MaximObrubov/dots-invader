@@ -24,6 +24,7 @@ export class GameComponent implements OnInit {
   }
 
   nextStep($point: Point) {
+    $point.color = this.currentPlayer.color;
     this.currentPlayer.addPoint($point);
     this.points = this.playersService.points;
     this.currentPlayer = this.playersService.nextPlayer;
