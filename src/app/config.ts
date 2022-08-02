@@ -1,6 +1,6 @@
 export const options = {
   dot: {
-    radius: 5,
+    radius: 6,
   },
   field: {
     width: 24,

@@ -1,9 +1,13 @@
-<div class="field" (click)="setPoint()">
+<div class="field--wrapper">
+<div
+  class="field"
+  style="width:{{options.cell * options.width}}px; height: {{options.cell * options.height}}px;"
+  (click)="setPoint()"
+>
   <svg
     #svg
-    height="600px"
     id="field-ctx"
-    style="width:{{options.field.cell * size.width}}px; height: {{options.field.cell * size.height}}px; border:1px dashed black">
+    style="width:100%; height: 100%; border:1px dashed black">
     <style type="text/css">
       line { stroke: #ccc; stroke-width: 2; }
     </style>
@@ -36,6 +40,7 @@
     ></circle> -->
   </svg>
   <div class="field--points">
-    app-point
+    <game-point *ngFor="let point of points" [point]="point"></game-point>
   </div>
+</div>
 </div>

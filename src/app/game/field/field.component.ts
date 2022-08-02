@@ -19,48 +19,31 @@ import { Point } from '../types/point.class';
   templateUrl: './field.component.html',
   styleUrls: ['./field.component.scss']
 })
-export class FieldComponent implements OnInit, AfterViewInit {
+export class FieldComponent implements OnInit {
 
   @ViewChild('svg') svg!: ElementRef<SVGElement>;
-  mouseMove$!: Observable<Event>;
-  currentPoint: Point | undefined;
-
-  @Input() pointColor: string | null = null;
-  @Input() points!: Array<PointInterface>;
   @Output() pointSetEvent = new EventEmitter<Point>();
-  options = options;
+  options = options.field;
+  points: Array<PointInterface> = new Array((this.options.width + 1) * (this.options.height + 1)).fill(null);
   svgOffset!: {top: number, left: number}
 
-  constructor() {}
 
-  public size = { ...options.field };
+  constructor() {
+    const w = this.options.width + 1;
+    this.points = this.points.map((_, i) => {
+      return new Point(i % w, Math.floor(i / w), "transparent");
+    });
+  }
 
   ngOnInit(): void {
   }
 
-  ngOnChanges(): void {
-    let x, y;
-    this.currentPoint
-      ? {x, y} = this.currentPoint
-      : [x, y] = [0, 0];
-    if (this.pointColor) this.currentPoint = new Point( x , y, this.pointColor);
-  }
-
-  ngAfterViewInit() {
-    this.svgOffset = this.svg.nativeElement.getBoundingClientRect();
-    this.mouseMove$ = fromEvent(this.svg.nativeElement, 'mousemove')
-      .pipe(throttleTime(100));
-    this.mouseMove$.subscribe(this.onMouseMove.bind(this))
-  }
-
-  onMouseMove($event: Event) {
-    if (!this.currentPoint) return;
-    this.currentPoint.x = ($event as MouseEvent).clientX - this.svgOffset.left;
-    this.currentPoint.y = ($event as MouseEvent).clientY - this.svgOffset.top;
-  }
-
   setPoint() {
-    this.pointSetEvent.emit(this.currentPoint);
+    console.group('%c Custom log:', 'background: #00A9A5; color: #00D5DB; font-size: 16px;')
+    console.log("set point")
+    console.groupEnd()
+    // this.pointSetEvent.emit(this.currentPoint);
   }
 
 }
+

@@ -1,10 +1,7 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
-import { PointInterface } from '../types/point';
-import { options } from '../../config';
+import { Component,  OnInit } from '@angular/core';
 import { Player } from '../Player';
 import { Point } from '../types/point.class';
 import { PlayersService } from 'src/app/services/players.service';
-
 
 @Component({
   selector: 'app-game',

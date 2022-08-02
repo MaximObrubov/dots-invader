@@ -1,0 +1,16 @@
+$klass: "point";
+
+.#{$klass} {
+  border-radius: 50%;
+  position: absolute;
+  // background-color: red !important;
+  transform: translate(calc(-50% + 1px), calc(-50% + 1px));
+  transition: background 0.2s;
+  cursor: pointer;
+
+  &--active, &:hover {
+    .#{$klass}__color {
+      opacity: 1;
+    }
+  }
+}
